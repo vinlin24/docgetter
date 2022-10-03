@@ -4,7 +4,7 @@
 
 Requirements:
 
-- Python: >= 3.7
+- Python: 3.7 or above
 - Dependencies: None!
 - Platform: Independent, but browser behavior may vary depending on your browser of choice as determined by the underlying [webbrowser](https://docs.python.org/3/library/webbrowser.html) module.
 
@@ -93,11 +93,11 @@ docs -rp youtube            # Search "youtube" on readthedocs.io
 
 ## Contributing
 
-You know how it goes:
+After forking my repository:
 
 ```shell
-git clone https://github.com/USERNAME/YOUR-FORK-NAME
-cd YOUR-FORK-NAME
+git clone https://github.com/USERNAME/docgetter.git
+cd docgetter
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements_dev.txt
@@ -108,7 +108,7 @@ To version bump, update **both** the `metadata.version` value in [setup.cfg](set
 
 To build the project source, I provided an [overgrown script](scripts/build.py):
 
-```console
+```shell
 python scripts/build.py
 ```
 
