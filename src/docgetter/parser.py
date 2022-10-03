@@ -33,18 +33,8 @@ doc_types.add_argument("-r", "--readthedocs",
 
 # Global flags:
 # -------------
-# Mutually exclusive browser opening modes:
-#       [[-w | --window] | [-t | --tab]]
 # Whether program should use search instead of direct URL:
 #       [-s | --search]
-
-open_modes = parser.add_mutually_exclusive_group()
-open_modes.add_argument("-w", "--window",
-                        action="store_true",
-                        help="open the browser in a new window if possible")
-open_modes.add_argument("-t", "--tab",
-                        action="store_true",
-                        help="open the browser in a new tab if possible")
 
 parser.add_argument("-s", "--search",
                     action="store_true",
