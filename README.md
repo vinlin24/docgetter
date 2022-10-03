@@ -2,15 +2,21 @@
 
 **Command line shortcut for opening Python documentation webpages.** 
 
+Requirements:
+
+- Python: >= 3.7
+- Dependencies: None!
+- Platform: Independent, but browser behavior may vary depending on your browser of choice as determined by the underlying [webbrowser](https://docs.python.org/3/library/webbrowser.html) module.
+
 ## Quick Start
 
-```console
+```shell
 docs argparse
 docs --pypi discord.py
 docs --readthedocs google --search
 ```
 
-See [below](#examples) for more examples.
+See [below](#usage) for usage information.
 
 ## Description
 
@@ -27,6 +33,12 @@ I hope you find this simple tool useful! It certainly helps someone like me who 
 ## Installation
 
 This package is not yet available on to PyPI, but I plan to upload it soon!
+
+Alternatively, you can download a whl distribution from the [dist](dist) folder or [Releases](https://github.com/vinlin24/docgetter/releases) section and install it:
+
+```shell
+pip3 install path/to/docgetter-x.y.z-py3-none-any.whl
+```
 
 ## Usage
 
@@ -58,14 +70,14 @@ You can also add the global `-s/--search` flag with any of these methods to spec
 
 ### (1) Python Standard Library
 
-```console
+```shell
 docs pathlib        # Directly load pathlib's docs page
 docs -s path        # Search for "path" on docs.python.org
 ```
 
 ### (2) PyPI Project Homepage
 
-```console
+```shell
 docs -p numpy           # Directly load numpy's PyPI homepage
 docs --pypi pandas      # Directly load pandas' PyPI homepage
 docs -sp spotify        # Search "spotify" on pypi.org
@@ -73,8 +85,31 @@ docs -sp spotify        # Search "spotify" on pypi.org
 
 ### (3) readthedocs.io Project Homepage
 
-```console
+```shell
 docs -r selenium-python     # Directly load selenium's docs page
 docs --readthedocs rich     # Directly load rich's docs page
 docs -rp youtube            # Search "youtube" on readthedocs.io
 ```
+
+## Contributing
+
+You know how it goes:
+
+```shell
+git clone https://github.com/USERNAME/YOUR-FORK-NAME
+cd YOUR-FORK-NAME
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements_dev.txt
+pip install -e .
+```
+
+To version bump, update **both** the `metadata.version` value in [setup.cfg](setup.cfg#L3) and the `__version__` variable in [\_\_init\_\_.py](src/docgetter/__init__.py). Do this *before* building!
+
+To build the project source, I provided an [overgrown script](scripts/build.py):
+
+```console
+python scripts/build.py
+```
+
+Issues, pull requests, and feature proposals are all welcome!
