@@ -5,9 +5,12 @@ Define the command line parser for this package.
 
 from argparse import ArgumentParser
 
-parser = ArgumentParser(description=(
-    "Open the documentation page for a module or package."
-))
+from . import __version__
+
+parser = ArgumentParser(
+    prog=__package__,
+    description="Open the documentation page for a module or package."
+)
 
 # Intended usage (one of the three, mutually exclusive):
 # ------------------------------------------------------
@@ -33,8 +36,14 @@ doc_types.add_argument("-r", "--readthedocs",
 
 # Global flags:
 # -------------
+# Print version information, do nothing else, and exit
+#       [-v | --version]
 # Whether program should use search instead of direct URL:
 #       [-s | --search]
+
+parser.add_argument("-v", "--version",
+                    action="version",
+                    version=f"%(prog)s {__version__}")
 
 parser.add_argument("-s", "--search",
                     action="store_true",
