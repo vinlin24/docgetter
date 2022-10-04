@@ -57,7 +57,7 @@ def validate_version() -> str:
     """Extract, validate, and return the version from setup.cfg.
 
     Abort script if any of the following, checked in order, are true:
-    - metadata.version matches the version of an existing distribution.
+    - metadata.version matches the version of the existing distribution.
     - metadata.version is not compliant with semantic versioning.
     - metadata.version does not match __version__.
     """
@@ -68,11 +68,12 @@ def validate_version() -> str:
     version = config["metadata"]["version"]
 
     # Abort: metadata.version matches the version of an existing distribution
+    # pylint: disable-next=redefined-outer-name
     for path in DIST_PATH.iterdir():
         if version in path.name:
             box_print(
-                f"ABORTED: A distribution with metadata.version={version!r} "
-                "already exists!"
+                f"ABORTED: The current distribution {path} already has "
+                f"metadata.version={version!r}."
             )
             sys.exit(1)
 
@@ -122,6 +123,9 @@ command = (
     f"--bdist-dir \"{TEMP_PATH}\""
 )
 
+# Prepare to delete current dist(s) if build succeeds
+current_dists = list(DIST_PATH.iterdir())
+
 # Echo
 box_print(command)
 
@@ -130,3 +134,7 @@ subprocess.run(command, check=True)
 
 # Report
 box_print(f"Successfully built version {version}.")
+
+# Cleanup
+for path in current_dists:
+    path.unlink()
