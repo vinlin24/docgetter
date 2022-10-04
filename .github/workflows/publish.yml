@@ -25,10 +25,12 @@ jobs:
     steps:
       - name: "Checkout the main branch"
         uses: actions/checkout@main
-      - name: "Publish /dist/* file to Releases"
-        uses: xresloader/upload-to-github-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: "Upload /dist/* file to Releases"
+        uses: svenstaro/upload-release-action@v2
         with:
-          file: "*.whl"
-          tag_name: ${{ github.ref_name }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: /dist/*
+          file_glob: true
+          overwrite: true
+          tag: ${{ github.ref }}
+          body: "${{ github.ref }} distribution. Uploaded automatically with Actions."
