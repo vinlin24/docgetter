@@ -4,4 +4,4 @@ Initialize package namespace.
 """
 
 __author__ = "Vincent Lin"
-__version__ = "0.1.0"
+__version__ = "0.1.1"
