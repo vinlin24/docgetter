@@ -12,7 +12,13 @@ from pathlib import Path
 
 
 def AbsPath(relative: str) -> Path:
-    """Convert a relative path string to a resolved absolute Path."""
+    """Convert a relative path string to a `resolve()`d absolute Path.
+
+    The relative path is interpreted as relative to the location of
+    this script i.e. the directory part of `__file__`, NOT the current
+    working directory. This way, this script can be invoked from any
+    working directory.
+    """
     return (Path(__file__).parent / relative).resolve()
 
 
@@ -99,6 +105,12 @@ if sys.prefix != str(VENV_PATH):
     box_print("ABORTED: Activate the project virtual environment first.")
     sys.exit(1)
 
+# Remind and prompt for confirmation
+confirmation = input(
+    "Did you update all relevant documentation and metadata? (y/N) "
+)
+if confirmation.lower() != "y":
+    sys.exit(1)
 
 # Make sure I'm not being an idiot
 version = validate_version()
