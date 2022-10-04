@@ -38,7 +38,7 @@ def main() -> None:
 
     else:
         if ns.search:
-            search_query.update(heck_keywords="yes", area="default")
+            search_query.update(check_keywords="yes", area="default")
             url = PYTHON_DOCS_SEARCH + urlencode(search_query)
         else:
             url = PYTHON_DOCS_URL.format(name=ns.name)
