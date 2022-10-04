@@ -28,16 +28,20 @@ This program currently supports three documentation websites:
 2. [PyPI](https://pypi.org/) project homepages for packages available on PyPI. [↓](#2-pypi-project-homepage)
 3. [readthedocs.io](https://readthedocs.org/) homepages for projects that host their documentation on readthedocs.io. [↓](#3-readthedocsio-project-homepage)
 
-I hope you find this simple tool useful! It certainly helps someone like me who always bounces between doc pages. Personally, I'm [trying to become a coding ninja](https://gist.github.com/vinlin24/0bc08034d84bb604286b29d69c04d3f8), and clicking things on Google becomes an annoying chore very quickly.
+I hope you find this simple tool useful! It certainly helps someone like me who always bounces between doc pages.
 
 ## Installation
 
-This package is not yet available on to PyPI, but I plan to upload it soon!
+### Windows
 
-Alternatively, you can download a whl distribution from the [dist](dist) folder or [Releases](https://github.com/vinlin24/docgetter/releases) section and install it:
+```
+py -m pip install docgetter
+```
 
-```shell
-pip3 install path/to/docgetter-x.y.z-py3-none-any.whl
+### Unix/MacOS
+
+```
+python3 -m pip install docgetter
 ```
 
 ## Usage
@@ -62,33 +66,33 @@ optional arguments:
                      attempting to directly load a URL
 ```
 
-By default, the supplied name is interpreted as a Python standard library module/package. You can use the (mutually exclusive) `-p`/`--pypi` or `-r`/`--readthedocs` flags to specify that the name refers to a PyPI project or readthedocs.io homepage respectively instead.
+By default, the supplied name is interpreted as a Python standard library module/package. You can use the `-p`/`--pypi` or `-r`/`--readthedocs` flag to specify that the name refers to a PyPI project or readthedocs.io homepage respectively instead.
 
 You can also add the global `-s/--search` flag with any of these methods to specify using the site's search engine instead of attempting to directly load a URL.
 
 ## Examples
 
-### (1) Python Standard Library
+### Python Standard Library
 
 ```shell
 docs pathlib        # Directly load pathlib's docs page
 docs -s path        # Search for "path" on docs.python.org
 ```
 
-### (2) PyPI Project Homepage
+### PyPI Project Homepage
 
 ```shell
 docs -p numpy           # Directly load numpy's PyPI homepage
 docs --pypi pandas      # Directly load pandas' PyPI homepage
-docs -sp spotify        # Search "spotify" on pypi.org
+docs -ps spotify        # Search "spotify" on pypi.org
 ```
 
-### (3) readthedocs.io Project Homepage
+### readthedocs.io Project Homepage
 
 ```shell
 docs -r selenium-python     # Directly load selenium's docs page
 docs --readthedocs rich     # Directly load rich's docs page
-docs -rp youtube            # Search "youtube" on readthedocs.io
+docs -rs youtube            # Search "youtube" on readthedocs.io
 ```
 
 ## Contributing
